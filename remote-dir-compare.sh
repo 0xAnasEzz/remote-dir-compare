@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+VERSION="1.0.0"
+
 # -----------------------------------------------------------------------------
 # Dual-Mode Directory Comparison & Verification Tool for Phone Migration
 # Modes:
@@ -65,6 +67,10 @@ format_duration() {
     fi
 }
 
+show_version() {
+    echo "remote-dir-compare $VERSION"
+}
+
 show_usage() {
     setup_colors
     cat << EOF
@@ -90,6 +96,10 @@ ${C_BOLD}Usage:${C_RESET}
        remote-dir-compare verify /sdcard/DCIM
        remote-dir-compare verify Music,Downloads,Documents
        remote-dir-compare verify /sdcard/{Music,Download,Documents}
+
+  ${C_CYAN}3. Other:${C_RESET}
+     remote-dir-compare -v | --version    Show version
+     remote-dir-compare -h | --help       Show this help
 
 ${C_DIM}Note:
   • When multiple directories are specified (comma-separated or brace expansion), each directory
@@ -853,6 +863,10 @@ case "${MODE,,}" in
     verify|check)
         shift
         run_verify "$@"
+        ;;
+    -v|--version|version)
+        show_version
+        exit 0
         ;;
     -h|--help|help)
         show_usage

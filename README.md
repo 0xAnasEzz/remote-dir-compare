@@ -158,6 +158,10 @@ Usage:
      remote-dir-compare verify <directory> [hash_file]
      remote-dir-compare verify <dir1,dir2,dir3,...>
      remote-dir-compare verify <path/{dir1,dir2,...}>
+
+  3. Other:
+     remote-dir-compare -v | --version
+     remote-dir-compare -h | --help
 ```
 
 ### 1. Hashing Mode (Source Device)
